@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'apps.TipoCompra',
     'apps.Clientes',
     'apps.UM',
+    'apps.Familia',
 ]
 
 MIDDLEWARE = [
