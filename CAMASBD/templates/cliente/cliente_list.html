@@ -1,0 +1,58 @@
+{% extends 'base/base.html' %}
+
+{% block header %}
+<h5>Listado de Clientes</h5>
+{% endblock %}
+
+{% block content %}
+
+<table class="table table-bordered" >
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>Primer Nombre</td>
+            <td>Segundo Nombre</td>
+            <td>Primer Apellido</td>
+            <td>Segundo Apellido</td>
+            <td>Direccion</td>
+            <td>Celular</td>
+            <td>Activo</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if object_list %}
+        {% for cliente in object_list %}
+        <tr>
+            <td>{{ cliente.id }}</td>
+            <td>{{ cliente.pnombre }} {{ cliente.persona.snombre }} {{ cliente.pape }} {{ cliente.sape }}</td>
+            <td>{{ cliente.direccion }}</td>
+            <td>{{ cliente.celular }}</td>            
+            <td>{{ cliente.activo }}</td>
+            <td>
+                    <a class="btn btn-primary" href="{% url 'cliente_editar' Clientes.id %}">Editar</a>
+                    <a class="btn btn-danger" href="{% url 'cliente_eliminar' Clientes.id %}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+
+        {% else %}
+        <h1>No hay registros de Clientes</h1>
+
+        {% endif %}
+    </tbody>
+</table>
+<ul class="pager">
+    <li>
+       {% if page_obj.has_previous %}
+       <a href="?page={{ page_obj.previous_page_number }}">Previous</a> 
+       {% endif %}
+    </li>
+    <li>
+        {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">Next</a> 
+        {% endif %}
+     </li>
+</ul>
+
+{% endblock %}
+
