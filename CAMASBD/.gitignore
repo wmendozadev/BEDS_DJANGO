@@ -1,4 +1,13 @@
-.__pycache__
-/.__[Pp]ycache__/
+*.log
+
+*.pot
+
+*.pyc
+
+*/*/*/__pycache__/
+
+*/*/__pycache__/
+
+*/__pycache__/
 
 /static/lib*
